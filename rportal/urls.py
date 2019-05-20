@@ -15,8 +15,10 @@ Including another URLconf
     3. This is an extra comment for testing review apps on Heroku.
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
+    path('', include('project.urls')),
 ]
