@@ -7,3 +7,9 @@ def home(request):
 
 def about(request):
     return HttpResponse('<h1>About</h1>')
+
+def login_f(request):
+    return render(request,'project/login_f.html')
+
+def login_s(request):
+    return render(request,'project/login_s.html')
