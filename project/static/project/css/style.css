@@ -178,6 +178,19 @@ h6 {
   padding: 200px 0 120px 0;
 }
 
+img.sb-logo{
+  width: 500px;
+  height: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+  img.sb-logo{
+    width: 70%;
+    height: 250px;
+  }
+}
+
+
 #intro .intro-img {
   width: 50%;
   float: right;
