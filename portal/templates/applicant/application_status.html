@@ -1,0 +1,61 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Application Status{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6 col-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{% include 'applicant/messages.html' %}
+					<h3 class="text-center">Application Status</h3>
+					{% if application %}
+						<div class="container-fluid text-center">
+							{% if application.verified %}
+								<span>{{ application.application_no }}</span>
+								<br/>
+								<span class="text-success">Application verified</span>
+								<br/>
+								{% if application.fee.is_fees_paid %}
+									{% if application.fee.verified %}
+										<span class="text-success">Fee details verified</span>
+									{% else %}
+										<span class="text-danger">Fee paid. Details not verified yet</span>
+									{% endif %}
+								{% endif %}
+								<br/>
+								<span>Please <a href="{% url 'accounts:login' %}">login</a> to proceed to next steps</span>
+							{% else %}
+								<span>{{ application.application_no }}</span>
+								<br/>
+								{% if application.is_application_filled %}
+									<span class="text-danger">Application not verified</span>
+									<br/>
+									<span>Contact the officials</span>
+								{% else %}
+									<span class="text-danger">Application rejected</span>
+									<br/>
+									<span>Please <a href="{% url 'accounts:login' %}">login</a> and check the errors or contact the offficials</span>
+								{% endif %}	
+							{% endif %}
+						</div>
+					{% else %}
+						<div class="container-fluid">
+							<h4 class="text-center">Enter application number</h4>
+						</div>
+						<form class="text-center" role="search" method="get" action="">
+	                        <div class="form-group">
+	                            <input type="text" class="form-control" name="q" value="{{ request.GET.q }}" />
+	                        </div>
+	                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+	                    </form>
+	                {% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

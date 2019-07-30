@@ -1,0 +1,61 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}All slots{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8 col-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{% include 'official/messages.html' %}
+					<h3 class="text-center">All Slots</h3>
+					<div class="text-center">
+						<a href="{% url 'portal:create-slot' %}"><button type="button" class="btn btn-success">Create slot</button></a>
+					</div>
+					
+					<div class="table-responsive" style="margin-top: 20px;">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Start date</th>
+									<th>End date</th>
+									<th>Duration</th>
+									<th>Max people</th>
+									<th>Present strength</th>
+									<th>Filled?</th>
+									<th>Edit</th>
+									<th>Delete slot</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for slot in slots %}
+									<tr>
+										<td>{{ slot.start_date }}</td>
+										<td>{{ slot.end_date }}</td>
+										<td>{{ slot.duration }}</td>
+										<td>{{ slot.max_strength }}</td>
+										<td>{{ slot.present_strength }}</td>
+										<td>{{ slot.is_filled }}</td>
+										<td><a href="{% url 'portal:edit-slot' slot.id %}"><button type="button" class="btn btn-info btn-xs">Edit</button></a></td>
+										<td>
+											<form action="{% url 'portal:delete-slot' slot.id %}" method="get">
+												{% csrf_token %}
+												<input type="hidden" name="slot_id" value="{{ slotID }}">
+												<button type="submit" class="btn btn-danger btn-xs" style="background-color: red;">Delete</button>
+											</form>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

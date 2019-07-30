@@ -1,0 +1,116 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Fee Payment Details{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6">
+				<div class="panel">
+					<div class="panel-body">
+						{% include 'applicant/messages.html' %}
+						<h3 class="text-center">Documents</h3>
+						<h4 class="text-center">{{ application.application_no }} - {{ application.applicant_name }}</h4>
+						<table class="table">
+							<tbody>
+								<tr>
+									<th>Acknowledgement</th>
+									<td><a href="javascript:printAcknowledgement()"><button type="button" class="btn btn-success">Download &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									<script type="text/javascript">
+											function printAcknowledgement(){
+												acknowledgement = window.open("{% url 'portal:acknowledgement' application.id %}", 'Acknowledgement');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+										</script>
+								</tr>
+								<tr>
+									<th>Acceptance letter</th>
+									<td><a href="javascript:printAcceptance()"><button type="button" class="btn btn-success">Download &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									<script type="text/javascript">
+											function printAcceptance(){
+												acknowledgement = window.open("{% url 'portal:acceptance' application.id %}", 'Acceptance Letter');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+										</script>
+								</tr>
+								<tr>
+									<th>Temporary pass</th>
+									<td><a href="javascript:printPass()"><button type="button" class="btn btn-success">Download &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									<script type="text/javascript">
+											function printPass(){
+												acknowledgement = window.open("{% url 'portal:temp-pass' application.id %}", 'Temporary Pass');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+									</script>
+								</tr>
+								<tr>
+									<th>Indemnity Bond format</th>
+									<td><a href="javascript:printBond()"><button type="button" class="btn btn-success">Download &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									<script type="text/javascript">
+											function printBond(){
+												acknowledgement = window.open("{% url 'portal:bond' application.id %}", 'Indemnity Bond');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+									</script>									
+								</tr>
+								<tr>
+									<th>Attendance form</th>
+									<td><a href="javascript:printAttendance()"><button type="button" class="btn btn-success">Download &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									<script type="text/javascript">
+											function printAttendance(){
+												acknowledgement = window.open("{% url 'portal:attendance' application.id %}", 'Attendance');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+									</script>										
+								</tr>
+								<tr>
+									<th>Clearance form</th>
+									<td><a href="javascript:printClearance()"><button type="button" class="btn btn-success">Download &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									<script type="text/javascript">
+											function printClearance(){
+												acknowledgement = window.open("{% url 'portal:clearance' application.id %}", 'Clearance');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+									</script>	
+								</tr>
+								<tr>
+									<th>Rules and regulations</th>
+									<td><a href="javascript:printRules()"><button type="button" class="btn btn-success">Download &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									<script type="text/javascript">
+											function printRules(){
+												acknowledgement = window.open("{% url 'portal:rules' %}", 'Rules');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+									</script>									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

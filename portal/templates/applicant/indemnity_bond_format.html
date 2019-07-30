@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>Indemnity Bond</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/pdf.css' %}">
+</head>
+<body>
+	<div class="pdf-header">
+		<div>
+			<table class="pdf-table" style="margin-top:30px; margin-bottom:20px; width: 790px; border-bottom: 2px dashed black;font-size: 12pt;">
+				<tbody>
+					<tr>
+						<td style="border: 0;padding-left: 50px; padding-right: 50px;" width="700">
+							(Form of the undertaking and indemnity bond to be signed by the student or legal / natural guardian (in case of minor student) for industrial training / project work / field work in HSL)
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<table style="border: 0;margin-left: 0;clear: both;">
+		<tr>
+			<td>To,</td>
+		</tr>
+		<tr>
+			<td style="padding-top: 20px; padding-bottom: 10px;">The Chief Executive,</td>
+		</tr>
+		<tr>
+			<td style="padding-left: 20px; padding-top: 10px;">
+				M/s. Hindustan Shipyard Limited, Visakhapatnam, 530 005 (here in after called as HSL) accorded official permission for Sri. / Smt.{{ application.applicant_name }} to carry out {{application.user.applicant.get_internship_type_display}} in HSL from {{ application.slot.start_date}} to {{ application.slot.end_date}} in consideration  of your request letter no _____________________ dated on _ _ / _ _ / 20_ _ of _________________________________________________ wherein stated that the {{application.user.applicant.get_internship_type_display}} by group of students / individual is essential to fulfil the partial requirement of the curriculum for the award of __________ and gaining knowledge in the area of Ship Building / Ship Repairs / HRM / Finance Management / IT / Maintenance  activities. In consideration of the above I / we have agreed to submit this letter of indemnity to HSL management as per rules against any / all risks untoward incidents that may occur during the above period in HSL premises. I __________________________________ (Name of the student and natural / legal guardian in case of minor student) undertake to agree that neither I nor my executor / administrator or any other legal representative will make any claims against the government / HSL management or any other officers / employees in the service of Government / HSL in respect of any loss or injury to me / my child including major injury resulting death while undergoing training in HSL yard and I understand that no compensation will be admissible or payable by the Govt. or HSL in this regard. I further agree to abide by all the rules and regulations of the government or HSL so as to bind myself / my heirs / my executor / administrator to indemnity HSL or any employees in the service of the government against any claims which may be third party against HSL or any of them arising out of any act or default on the part of myself / ourselves during the training in the HSL premises.
+			</td>
+		</tr>
+		<tr>
+			<td style="padding-left: 20px; padding-top: 10px;">Signed on the ____ day on _____________ 20_ _    at Visakhapatnam</td>
+		</tr>
+	</table>
+
+	<div style="display: block; clear: both; margin-top: 60px; margin-bottom: 60px;">
+		<div class="container-fluid" style="float: left; margin-top: 10px;" align="left">
+			Signature of the Natural / Legal Guardian<br>
+			(In case of Minor Student)<br>	
+		</div>
+		<div class="container-fluid" style="float: right; margin-top: 60px; margin-bottom: 30px;" align="right">
+			Signature of the Candidate<br>
+		</div>
+	</div>
+	<div style="display: block; clear: both; margin-top: 60px; margin-bottom: 30px;">
+		<div class="container-fluid" style="float: left; margin-top: 10px;" align="left">
+			Signature of Witness<br>	
+		</div>
+	</div>
+	<div style="display: block; clear: both; margin-top: 20px; margin-bottom: 20px;">
+		<div class="container-fluid" style="float: left; margin-top: 10px;" align="left">
+			Witness Address: <br>
+			______________________________&nbsp;<br>
+			______________________________&nbsp;<br>
+			______________________________&nbsp;<br>	
+		</div>
+		<div class="container-fluid" style="float: right; margin-top: 20px; margin-bottom: 20px;" align="right">
+			Candidate Address: <br>
+			______________________________&nbsp;<br>
+			______________________________&nbsp;<br>
+			______________________________&nbsp;<br>
+		</div>
+	</div>
+
+	<div style="display: block; clear: both; margin-top: 20px; margin-bottom: 20px;">
+		<div class="container-fluid" style="margin-top: 10px;" align="center">
+			<h3 align="center">For office use	</h3>
+			<h5 align="center">ACCEPTED / REJECTED</h5>
+		</div>
+	</div>
+
+	<div style="display: block; clear: both; margin-top: 20px; margin-bottom: 20px;">
+		<div class="container-fluid" style="float: left; margin-top: 10px; clear: both;" align="left">
+			Date:
+		</div>
+		<div class="container-fluid" style="float: right; margin-top: 20px; margin-bottom: 20px;" align="right">
+			For and on behalf of <br>
+			For CHIEF EXECUTIVE<br/
+		</div>
+	</div>
+</body>

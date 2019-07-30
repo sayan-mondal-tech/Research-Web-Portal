@@ -1,0 +1,66 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Fee Payment Details{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6">
+				<div class="panel">
+					<div class="panel-body">
+						{% include 'official/messages.html' %}
+						<h3 class="text-center">Fees details</h3>
+						<table class="table">
+							<tbody>
+								<tr>
+									<th>Transaction no : </th>
+									<td>{{ fee.transaction_no }}</td>
+								</tr>
+								<tr>
+									<th>Application no : </th>
+									<td>{{ fee.application.application_no }}</td>
+								</tr>
+								<tr>
+									<th>Applicant name : </th>
+									<td>{{ fee.application.applicant_name }}</td>
+								</tr>
+								<tr>
+									<th>Fee paid : </th>
+									<td>{{ fee.fees }}</td>
+								</tr>
+								<tr>
+									<th>Paid on : </th>
+									<td>{{ fee.paid_on }}</td>
+								</tr>
+								<tr>
+									<th>Paid through : </th>
+									<td>{{ fee.get_fee_type_display }}</td>
+								</tr>
+								<tr>
+									<th>Receipt : </th>
+									<td><a href="{{ fee.fee_receipt.url }}">View</a></td>
+								</tr>
+								<tr>
+									<th>Application : </th>
+									<td><a href="{% url 'portal:application-details' fee.application.id %}">View</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="submit-row">
+							{% if fee.is_fees_paid %}
+								{% if fee.verified %}
+									Fee payment verified
+								{% else %}
+									<a href="{% url 'portal:fee-verify' fee.id %}"><button type="button" class="btn btn-success">Payment Verified</button></a>
+									<a href="{% url 'portal:fee-reject' fee.id %}"><button type="button" class="btn btn-danger">Reject Payment</button></a>
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

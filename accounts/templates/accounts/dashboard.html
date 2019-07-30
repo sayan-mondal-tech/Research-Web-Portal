@@ -1,0 +1,91 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %} {{ profile.user.first_name }} {{ profile.user.last_name }} {% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{% if user.applicant %}
+					<div class="row" style="text-align: center;">		
+						<div class="col-sm-4 col-md-4 col-sm-offset-4 col-md-offset-4">
+								<div class="container-fluid">
+									<a href="{% url 'accounts:edit-profile' %}"><button type="submit" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span>&nbsp; Edit Profile</button></a>
+								</div>
+
+
+							<div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+								<table class="table">
+									<thead>
+										<tr>
+											<th style="text-align: center;">
+												{{ profile.user.first_name }} {{ profile.user.last_name }}
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												Username : {{ profile.user.username }}
+											</td>
+										</tr>
+										<tr>
+											<td>
+												E-mail : {{ profile.user.email }}
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Mobile no : {{ profile.mobile_no }}
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				{% elif user.official %}
+					<div class="row">
+						<div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>{{ profile.user.first_name }} {{ profile.user.last_name }}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											Employee id : {{ profile.employee_id }}
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Designation : {{ profile.designation }}
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Mobile no : {{ profile.mobile_no }}
+										</td>
+									</tr>
+								</tbody>
+							</table>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="container-fluid" style="text-align: center;">
+							<a href="{% url 'accounts:edit-official' %}"><button type="submit" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span>&nbsp; Edit Profile</button></a>
+						</div>
+					</div>
+				{% else %}
+					<div class="row">
+						<div class="container-fluid">
+							<p class="text-danger">No Dashboard</p>
+						</div>		
+					</div>		
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

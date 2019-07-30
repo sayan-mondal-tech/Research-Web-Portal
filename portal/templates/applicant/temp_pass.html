@@ -1,0 +1,179 @@
+<html>
+<head>
+	<title>Rules and regulations</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/pdf.css' %}">
+	<style type="text/css">
+		body {
+			font-size: 9.5pt;
+		}
+		table, th, td, tr {
+			font-size: 9.5pt;
+		}
+	</style>
+</head>
+<body>
+	<div class="pdf-header">
+		<div class="form-header">
+			<table class="pdf-table">
+				<tbody>
+					<tr>
+						<td style="border: 0;" width="100" a>
+							<img src="{% static 'portal/logo.png' %}" height="60" />
+						</td>
+						<td style="border: 0;" width="700">
+							<h4 align="center"><strong>Hindustan Shipyard Limited</strong></h4>
+							<h6 align="center">TRAINING &amp; DEVELOPMENT DEPARTMENT</h6>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div style="border: 1px solid black;float: right;">
+			<img src="{{ application.applicant_photo.url }}" alt="{{ application.applicant_name }}" width="80" />
+		</div>
+	</div>
+	<table class="table table-bordered table-condensed">
+		<thead>
+			<tr>
+				<th colspan="2"><h5 align="center"><b>APPLICATION FOR TEMPORARY PASS</b></h5></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<td>
+					{{ application.applicant_name }}
+				</td>
+			</tr>
+			<tr>
+				<th>Father Name</th>
+				<td></td>	
+			</tr>
+			<tr>
+				<th>Mother Name</th>
+				<td></td>	
+			</tr>
+			<tr>
+				<th>Course Details</th>
+				<td>{{application.course}} in {{application.user.applicant.get_department_display}} &nbsp;({{application.year_of_study}} year)</td>	
+			</tr>
+			<tr>
+				<th>Present address</th>
+				<td></td>	
+			</tr>
+			<tr>
+				<th>Permanent address</th>
+				<td>{{application.residence_address}}</td>	
+			</tr>
+			<tr>
+				<th>Internship categroy</th>
+				<td>{{application.course}} intern</td>
+			</tr>
+			<tr>
+				<th>Period</th>
+				<td>From {{application.slot.start_date}} to {{application.slot.end_date}}</td>	
+			</tr>
+		</tbody>
+	</table>
+	<div class="text-center" style="display: block;">
+		I am aware that HSL is a prohibited area and this permit is issued under the provisions of the Indian Official Act, 1921 and the Rules &amp; Regulations of HSL
+	</div>
+	<div style="display: block; clear: both; margin-top: 30px; margin-bottom: 10px;">
+		<div class="container-fluid" style="float: left; margin-top: 10px;" align="left">
+			<b>Signature of the Candidate</b><br>
+		</div>
+		<div class="container-fluid" style="float: right; margin-top: 10px;" align="right">
+			<b>Signature of the Employer/Dept Head</b><br>
+		</div>
+	</div>
+	<div style="display: block; clear: both; margin-top: 10px; margin-bottom: 10px;">
+		<div class="container-fluid" style="float: left; margin-top: 10px; clear: both;" align="left">
+			<b>Date:</b><br>
+		</div>
+	</div>
+
+	<!--pass-->
+	<div class="pdf-header" style="border-top: 2px solid black;">
+		<div class="form-header">
+			<table class="pdf-table">
+				<tbody>
+					<tr>
+						<td style="border: 0;" width="100">
+							<img src="{% static 'portal/logo.png' %}" height="60" />
+						</td>
+						<td style="border: 0;" width="700">
+							<h4 align="center"><strong>Hindustan Shipyard Limited</strong></h4>
+							<h6 align="center">(A Govt. of India Ministry of Defence Undertaking)</h6>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div style="border: 1px solid black;float: right;">
+			<img src="{{ application.applicant_photo.url }}" alt="{{ application.applicant_name }}" width="80" />
+		</div>
+	</div>
+	<table class="table table-bordered table-condensed">
+		<thead>
+			<tr>
+				<th colspan="6"><h5 align="center"><b>TEMPORARY PASS FOR TRAINEES</b></h5></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Pass No</th>
+				<td></td>
+				<th>Date of Issue</th>
+				<td></td>
+				<th>Valid upto</th>
+				<td>{{ application.slot.end_date }}</td>
+			</tr>
+			<tr>
+				<td colspan="2">Name</td>
+				<td colspan="4">{{ application.applicant_name }}</td>
+			</tr>
+			<tr>
+				<th colspan="2">Father Name</th>
+				<td colspan="4"></td>	
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>{{application.get_gender_display}}</td>
+				<td>Date of birth</td>	
+				<td>{{application.date_of_birth}}</td>
+				<td>Badge No</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="2">Internship categroy</td>
+				<td colspan="4">{{application.course}} intern</td>
+			</tr>
+			<tr>
+				<td colspan="2">Identification Mark</td>
+				<td colspan="4"></td>	
+			</tr>
+			<tr>
+				<th colspan="6">
+					<ul style="list-style-type: decimal;margin-bottom:30px;">
+						<li>The pass is issued subject to the Indian Official Secrets Act 1921.</li>
+						<li>This should be returned to the security department on expiry.</li>
+						<li>Photography in yard strictly prohibited.</li>
+						<li>HSL is a “PROHIBITED AREA”</li>
+						<li>Mobile phones are strictly Prohibited.</li>
+					</ul>
+					<span>Signature of pass holder</span>
+				</th>
+			</tr>
+			<tr>
+				<th colspan="6" style="padding-top: 30px;"><span style="float: right;">Signature of Issuing Authority</span></th>
+			</tr>
+		</tbody>
+	</table>
+</body>

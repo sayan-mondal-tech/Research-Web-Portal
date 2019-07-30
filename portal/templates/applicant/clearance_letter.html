@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>Clearance</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/pdf.css' %}">
+</head>
+<body>
+	<div class="text-center">
+		<h3><b>Clearance form</b></h3>
+	</div>
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td>
+					<h4 align="center">Security Clearance:</h4>
+					<h6 align="center">(Candidate has to return the issued Temporary pass in Security Dept.)</h6>
+					<h6 align="center" style="padding-top: 50px;">(Signature)</h6>
+				</td>
+				<td>
+					<h4 align="center">Project  / Mini Project /Training Guide Clearance:</h4>
+					<h6 align="center" style="padding-top: 70px;">(Signature)</h6>
+				</td>
+				<td>
+					<h4 align="center">T & D Dept. Clearance:</h4>
+					<h6 align="center">No. of working days: ______</h6>
+					<h6 align="center">No. of present days:______</h6>
+					<h6 align="center" style="padding-top: 20px;">(Signature)</h6>
+				</td>
+			</tr>
+			<tr>
+				<th colspan="3"><h3 align="center">Certificate detials</h3></th>
+			</tr>
+			<tr>
+				<td>
+					<h4 style="float: left;">Issue Date:</h4>
+				</td>
+				<td>
+					<h4 style="float: left;">File No:</h4>
+				</td>
+				<td>
+					<h4 style="float: left;">Training Category: {{ application.user.applicant.get_internship_type_display }}</h4>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<h4 style="float: right;padding-top: 50px;">Head of T & D Dept.</h4>
+				</td>
+			</tr>
+			<tr>
+				<th colspan="3"><h3 align="center">Certificate receipt acknowledgement</h3></th>
+			</tr>
+			<tr>
+				<td>
+					<h4 style="float: left;">Date:</h4>
+				</td>
+				<td>
+					<h4 style="float: left;">Signature</h4>
+				</td>
+				<td>
+					<h4 style="float: left;">Contact No:</h4>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>

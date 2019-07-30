@@ -1,0 +1,42 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Student Portal{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		{% include 'official/messages.html' %}
+		<div class="submit-row onesubmit">
+			<a href="{% url 'portal:all-slots' %}"><button type="button" class="btn btn-info">View my slots</button></a>
+			<a href="{% url 'portal:create-slot' %}"><button type="button" class="btn btn-info">Create slot</button></a>
+		</div>
+		<div class="col-sm-6 col-md-12 col-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="submit-row onesubmit">
+						<a href="{% url 'portal:all-applications' %}"><button type="button" class="btn btn-info">All applications</button></a>
+					</div>
+						<table class="table">
+							<thead>
+								<th colspan="2">Applications to be verified</th>
+							</thead>
+							<tbody>
+								{% for application in applications %}
+									<tr>
+										{% if not application.verified and application.is_application_filled %}
+											<td>{{ application.application_no }}</td>
+											<td>{{ application.applicant_name }}</td>
+											<td><a href="{% url 'portal:application-details' application.id %}"><button type="button" class="btn btn-success btn-sm">View</button></td>
+										{% endif %}
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

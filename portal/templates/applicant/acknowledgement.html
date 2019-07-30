@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title>Acknowledgement</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/pdf.css' %}">
+</head>
+<body>
+	<div class="pdf-header">
+		<div class="form-header">
+			<table class="pdf-table">
+				<tbody>
+					<tr>
+						<td style="border: 0;" width="250">
+							<img src="{% static 'portal/rportal_logo.jpg' %}" height="200" width="250" />
+						</td>
+						<td style="border: 0;" width="400">
+							<h4 align="center"><strong>Research Portal</strong></h4>
+							<h3 align="center"><strong>Acknowledgement Slip</strong></h3>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="pdf-photo">
+			<img src="{{ application.applicant_photo.url }}" alt="{{ application.applicant_name }}" width="110px" />
+		</div>
+	</div>
+
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th colspan="4" style="text-align: center;">
+					<h3>Application Number : {{ application.application_no }}</h3>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<td colspan="3">{{ application.applicant_name }}</td>
+			</tr>
+			<tr>
+				<th>Mobile no</th>
+				<td colspan ="3">{{ application.mobile_no }}</td>
+			</tr>
+			<tr>
+				<th>E-mail</th>
+				<td colspan="3">{{ application.email }}</td>
+			</tr>
+			<tr>
+				<th>Department</th>
+				<td colspan="3">{{ application.user.applicant.get_department_display }}</td>
+			</tr>
+			<tr>
+				<th>Project Title</th>
+				<td>{{ application.slot.title }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--
+	<div class="container-fluid" style="text-align: center;">
+		<button class="btn btn-success btn-xs" onclick="window.print()">
+			Print
+		</button>
+	</div> -->
+</body>

@@ -1,0 +1,59 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}All applications{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6 col-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{% include 'official/messages.html' %}
+					{% if search_app %}
+						<div class="submit-row onesubmit">
+							<a href="{% url 'portal:all-applications' %}"><button type="button" class="btn btn-info">All applications</button></a>
+						</div>
+						<h3 class="text-center">Application found</h3>
+						<table class="table">
+							<tbody>
+									<tr>
+									{% if search_app.is_application_filled %}
+										<td>{{ search_app.application_no }}</td>
+										<td>{{ search_app.applicant_name }}</td>
+										<td>{% if search_app.verified %}<span class="text-success">Verified</span>{% else %}<span class="text-danger">Not Verified</span>{% endif %}</td>
+										<td><a href="{% url 'portal:application-details' search_app.id %}"><button type="button" class="btn btn-info btn-sm">View</button></a></td>
+									{% endif %}
+									</tr>
+							</tbody>
+						</table>
+					{% else %}
+						<h3 class="text-center">All Applications</h3>
+	                        <form class="navbar-form text-center" role="search" method="get" action="">
+	                            <div class="form-group">
+	                                <input type="text" class="form-control" name="q" value="{{ request.GET.q }}" />
+	                            </div>
+	                             <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+	                        </form>
+						<table class="table">
+							<tbody>
+								{% for application in applications %}
+									<tr>
+									{% if application.is_application_filled %}
+										<td>{{ application.application_no }}</td>
+										<td>{{ application.applicant_name }}</td>
+										<td>{% if application.verified %}<span class="text-success">Verified</span>{% else %}<span class="text-danger">Not Verified</span>{% endif %}</td>
+										<td><a href="{% url 'portal:application-details' application.id %}"><button type="button" class="btn btn-info btn-sm">View</button></a></td>
+									{% endif %}
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

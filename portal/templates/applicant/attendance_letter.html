@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Attendance</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'portal/pdf.css' %}">
+	<style type="text/css">
+		table,tr,td,th {
+			border: 2px solid black;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			padding-left: 50px;
+			padding-right: 50px;
+		}
+	</style>
+</head>
+<body>
+	<table align="center">
+		<thead>
+			<tr>
+				<th colspan="8" class="text-center"><h3>Attendance details - {{ application.applicant_name }}</h3></th>
+			</tr>
+			<tr>
+				<td>Sl. no</td>
+				<td>Date</td>
+				<td>Arrival</td>
+				<td>Departure</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for i in duration %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>

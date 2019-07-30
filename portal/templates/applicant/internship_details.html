@@ -1,0 +1,62 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Group Details{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-offset-3 col-md-offfset-3 col-sm-6 col-md-6 col-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{% include 'applicant/messages.html' %}
+					<table class="table">
+						<thead>
+							<tr>
+								<th colspan="2" class="text-center">Group details</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Internship type</th>
+								<td>
+									{% if profile.internship_type == 'T' %}
+										Training
+									{% else %}
+										Project
+									{% endif %}
+								</td>
+							</tr>
+							<tr>
+								<th>Duration</th>
+								<td>{{ profile.duration }}</td>
+							</tr>
+							<tr>
+								<th>Slot</th>
+								<td>{{ profile.slot }}</td>
+							</tr>
+							<tr>
+								<th>Course</th>
+								<td>{{ profile.course }}</td>
+							</tr>
+							<tr>
+								<th>Department</th>
+								<td>{{ profile.department }}</td>
+							</tr>
+							<tr>
+								<th>Group strength</th>
+								<td>{{ profile.group_strength }}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="text-center">
+						<strong class="text-danger">Deleting form will delete all the applications submitted and new applications will be rendered</strong>
+						<a href="{% url 'portal:internship-edit' %}"><button type="button" class="btn btn-danger">Delete and fill new form</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

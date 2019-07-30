@@ -1,0 +1,55 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Application Form{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6">
+				<div class="panel">
+					<div class="panel-body">
+						{% include 'applicant/messages.html' %}
+						<h3 class="text-center">Application form</h3>
+						<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div>
+								{% include 'applicant/form_template.html' %}
+								<fieldset class="module aligned">
+									<div class="form-row">
+										<div>
+											<input type="checkbox" name="tnc" id="checkbox" onclick="javascript:checkTnC()"/> &nbsp; <span>I accept to Terms and condition etc.</span>
+											<div class="text-danger" style="display: none;" id="errorText">Please check this</div>
+										</div>
+								</fieldset>
+								<div class="submit-row onesubmit">
+									<button type="submit" class="btn btn-success" id="submit" disabled="true" onclick="javascript:checkTnC()">Submit</button>
+								</div>
+								<script type="text/javascript">
+									function checkTnC(){
+										checkbox = document.getElementById('checkbox');
+										btn = document.getElementById('submit');
+										errorText = document.getElementById('errorText');
+
+										if(checkbox.checked ==true) {
+											btn.disabled=false;
+											errorText.style.display="none";
+											return;
+										}
+										else {
+											btn.disabled=true;
+											errorText.style.display="block";
+											return;
+										}
+
+									}
+								</script>
+							</div>	
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+{% endblock %}

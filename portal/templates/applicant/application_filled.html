@@ -1,0 +1,30 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Application Submitted{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6 col-12">
+			<div class="panel panel-default">
+				<div class="panel-body text-center">
+					<h3>Application successfully submitted</h3>
+					<h2>Application number : <span class="text-success"><strong>{{ application.application_no }}</strong></span></h2>
+					<a href="javascript: printonclick()"><button type="button" class="btn btn-success btn-sm">Acknowledgement &nbsp;<span class="glyphicon glyphicon-download"></span></button></a>
+					<script type="text/javascript">
+						function printonclick(){
+							acknowledgement = window.open("{% url 'portal:acknowledgement' application.id %}", 'Acknowledgement');
+							acknowledgement.print();
+							acknowledgement.onafterprint = function() {
+								acknowledgement.close();
+							}
+						}
+					</script>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'applicant/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="panel panel-default text-center">
+		<div class="panel-body">
+			<p>Are you sure you want to delete "{{ slot }}"?</p>
+			<form method="post">
+				{% csrf_token %}
+				<input type="button" value="Cancel" class="btn btn-success" onclick="window.history.go(-1);" />
+			    <input type="submit" value="Confirm" class="btn btn-danger" />
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

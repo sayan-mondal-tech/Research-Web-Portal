@@ -1,0 +1,83 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Application{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6 col-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{% include 'applicant/messages.html' %}
+					<h3 class="text-center">Applications</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Application</th>
+								<th>Actions</th>
+								<th>Remarks</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for application in applications %}
+							<tr>
+								<td>
+									{% if application.is_application_filled %}
+										<a href="#">{{ application.applicant_name }}</a> - {{ application.application_no }} &nbsp;
+										{% if application.verified %}
+											<span class="text-success">Verified</span>
+										{% else %}
+											<span class="text-danger">Not verified</span>
+										{% endif %}
+									{% else %}
+										Application - {{ forloop.counter }}
+									{% endif %}
+								</td>
+								{% if application.is_application_filled %}
+									<td>
+										<a href="javascript: printonclick()"><button type="button" class="btn btn-success btn-sm">Acknowledgement &nbsp;<span class="glyphicon glyphicon-download"></span></button></a>
+										<script type="text/javascript">
+											function printonclick(){
+												acknowledgement = window.open("{% url 'portal:acknowledgement' application.id %}", 'Acknowledgement');
+												acknowledgement.print();
+												acknowledgement.onafterprint = function() {
+													acknowledgement.close();
+												}
+											}
+										</script>
+									</td>
+								{% else %}
+									<td>
+										<a href="{% url 'portal:application-form' application.pk %}"><button type="button" class="btn btn-info btn-sm">Edit &nbsp;<span class="glyphicon glyphicon-plus-sign"></span></button></a>
+									</td>
+								{% endif %}
+								{% if application.remarks %}
+									<td>
+										<span class="text-{% if application.verified %}success{% else %}danger{% endif %}">{{ application.remarks }}</span>
+									</td>
+								{% endif %}
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+					{% if fee %}
+						<div class="container-fluid" style="margin-top: 30px;">
+							<div>
+								<strong>Reporting date : </strong><span>{{ applicant.reporting_date|date:"D d M Y" }} @ {{ applicant.reporting_date|time:"H:i" }} A.M</span><br>
+								{% if not fee.is_fees_paid %}
+									<strong>Fee amount : </strong><span>{{ fee.fees }}</span><br>
+									<a href=""><button type="button" class="btn btn-success">Pay fees</button></a>
+								{% else %}
+									<strong>Fees paid <a href="">View receipt</a></strong>
+								{% endif %}
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

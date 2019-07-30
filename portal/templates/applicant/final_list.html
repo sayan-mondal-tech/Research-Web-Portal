@@ -1,0 +1,40 @@
+{% extends 'applicant/base.html' %}
+
+{% block title %}Final List{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6">
+				<div class="panel">
+					<div class="panel-body">
+						{% include 'applicant/messages.html' %}
+						<h3 class="text-center">All applications</h3>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Application number</th>
+									<th>Applicant name</th>
+									<th>Reporting date</th>
+									<th>Get documents</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for application in applications %}
+									<tr>
+										<td>{{ application.application_no }}</td>
+										<td>{{ application.applicant_name }}</td>
+										<td>{{ applicant.reporting_date }}</td>
+										<td><a href="{% url 'portal:get-documents' application.id %}"><button type="button" class="btn btn-success">Get documents &nbsp;<span class="glyphicon glyphicon-download"></span></button></a></td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
