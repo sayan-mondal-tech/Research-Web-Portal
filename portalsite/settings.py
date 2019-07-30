@@ -26,7 +26,7 @@ SECRET_KEY = '92(*q^y)%5v21a)%g7!v=*+$!rbjv^z%e)3(r_@)bj(@l7wc&7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hslstudentportal.pythonanywhere.com','127.0.0.1','localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
