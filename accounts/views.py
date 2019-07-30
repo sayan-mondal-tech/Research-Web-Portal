@@ -57,7 +57,7 @@ def signup(request):
 			profile=Applicant.objects.create(user=new_user)
 			profile.mobile_no = profile_form.cleaned_data['mobile_no']
 			profile.save()
-			return redirect('accounts:login')
+			return redirect('accounts:login_s')
 	else:
 		user_form = UserForm()
 		profile_form = ApplicantForm()
@@ -76,7 +76,7 @@ def signup_official(request):
 			profile.employee_id = profile_form.cleaned_data['employee_id']
 			profile.designation = profile_form.cleaned_data['designation']
 			profile.save()
-			return redirect('accounts:login')
+			return redirect('accounts:login_f')
 	else:
 		user_form = UserForm()
 		profile_form = OfficialForm()
