@@ -1,5 +1,5 @@
 """
-WSGI config for portalsite project.
+WSGI config for rportal project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,7 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portalsite.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rportal.settings")
 
 application = get_wsgi_application()
-
