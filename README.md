@@ -1,7 +1,7 @@
 # Research-Web-Portal
 
 <p align="center">
-  <img  src=/assets/research_portal_cropped.png>
+  <img  src=/static/research_portal_cropped.png>
 </p>
 
 ## About
