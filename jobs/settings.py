@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'jobsapp',
     'accounts',
-    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'jobs.urls'
@@ -65,8 +63,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'social_django.context_processors.backends',  # <--
-                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
@@ -84,8 +80,7 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/home_initial'
 
-SOCIAL_AUTH_GITHUB_KEY = 'f871d0681962f50a62e0'
-SOCIAL_AUTH_GITHUB_SECRET = 'dd93c28dcd8155dd68b13a378982a5a3b1600dd6'
+
 
 
 

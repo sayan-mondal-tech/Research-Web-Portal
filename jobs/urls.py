@@ -6,7 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('jobsapp.urls')),
     path('', include('accounts.urls')),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
     path('api/', include([
         path('', include('jobsapp.api.urls')),
     ])),
