@@ -82,8 +82,6 @@ LOGIN_REDIRECT_URL = '/home_initial'
 
 
 
-
-
 WSGI_APPLICATION = 'jobs.wsgi.application'
 
 # Database
