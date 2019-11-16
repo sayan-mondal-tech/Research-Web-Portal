@@ -5,8 +5,10 @@ from .views import *
 app_name = "jobs"
 
 urlpatterns = [
-    path('home_initial', home_init, name='home-init'),
-    path('', HomeView.as_view(), name='home'),
+    #path('home_initial', home_init, name='home-init'),
+    #path('', HomeView.as_view(), name='home'),
+    path('', home_init, name='home-init'),
+    path('home_initial', HomeView.as_view(), name='home'),
     #path('',home_init, name='home-init'),
     path('search', SearchView.as_view(), name='searh'),
     path('employer/dashboard', include([
